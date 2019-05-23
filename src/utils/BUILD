@@ -1,6 +1,6 @@
 cc_library(
     name = "utils",
-    hdrs = ["paramTypes.h"],
+    hdrs = glob(["*.h"]),
     visibility = ["//visibility:public"], 
     linkstatic = 1,
 )
