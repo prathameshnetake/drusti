@@ -3,7 +3,7 @@ cc_binary(
     srcs = ["main.cc"],
     deps = [
         "@opencv//:opencv",
-        "@ie//:ie",
+        # "@ie//:ie",
         "//src/utils:utils",
         "//src/DNNObjectDetect:DNNObjectDetect"
     ],

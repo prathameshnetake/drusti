@@ -1,8 +1,11 @@
+load("@drusti//:build_config.bzl", "opencv_srcs", "opencv_linkopts")
+
 cc_library(
     name = "opencv",
-    srcs = glob(["lib/*.so*"]),
+    srcs = opencv_srcs(exclude = []),
     hdrs = glob(["include/**/*.hpp", "include/**/*.h"]),
-    includes = ["include/opencv4"],
+    linkopts = opencv_linkopts(),
+    includes = ["include"],
     visibility = ["//visibility:public"], 
     linkstatic = 1,
 )
