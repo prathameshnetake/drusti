@@ -9,3 +9,12 @@ config_setting(
     values = {"cpu": "x64_windows"},
     visibility = ["//visibility:public"],
 )
+
+alias (
+    name = "opencv",
+    actual = select({
+        "//:windows": "@opencv_windows//:opencv",
+        "//:linux_x86_64": "@opencv_linux//:openv",
+    }),
+    visibility = ["//visibility:public"], 
+)

@@ -4,7 +4,7 @@ cc_library(
     hdrs = ["DNNObjectDetect.h"],
     visibility = ["//visibility:public"],
     deps = [
-      "@opencv//:opencv",
+      "//:opencv",
       "//src/utils:utils"
     ]
 )
