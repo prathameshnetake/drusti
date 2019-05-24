@@ -25,5 +25,5 @@ def opencv_linkopts(exclude = []):
 def ie_srcs():
   return select({
     "@drusti//:windows" : native.glob(["lib/*/Release/*.lib"]),
-    "@drusti//:linux_x86_64" : native.glob(["lib/*/Release/*.so"]),
+    "@drusti//:linux_x86_64" : native.glob(["lib/**/*.so"]),
   })

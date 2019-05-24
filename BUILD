@@ -14,7 +14,7 @@ alias (
     name = "opencv",
     actual = select({
         "//:windows": "@opencv_windows//:opencv",
-        "//:linux_x86_64": "@opencv_linux//:openv",
+        "//:linux_x86_64": "@opencv_linux//:opencv",
     }),
     visibility = ["//visibility:public"], 
 )
