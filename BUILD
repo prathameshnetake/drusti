@@ -18,3 +18,12 @@ alias (
     }),
     visibility = ["//visibility:public"], 
 )
+
+alias (
+    name = "ie",
+    actual = select({
+        "//:windows": "@ie_windows//:ie",
+        "//:linux_x86_64": "@ie_linux//:ie",
+    }),
+    visibility = ["//visibility:public"], 
+)
