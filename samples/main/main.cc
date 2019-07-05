@@ -37,7 +37,7 @@ int main() {
     cnnNet.ReadNetwork("C:/Users/Alex/open_model_zoo/model_downloader/Retail/object_detection/pedestrian/rmnet_ssd/0013/dldt/person-detection-retail-0013.xml");
     cnnNet.getNetwork().setBatchSize(1);
     cnnNet.ReadWeights("C:/Users/Alex/open_model_zoo/model_downloader/Retail/object_detection/pedestrian/rmnet_ssd/0013/dldt/person-detection-retail-0013.bin");
-    std::cout << "Model is read successfully" << std::endl;
+    std::cout << "Model read successfully" << std::endl;
     InferenceEngine::InputsDataMap inputInfo = cnnNet.getNetwork().getInputsInfo();
     std::cout << inputInfo.begin()->first << std::endl;
     InferenceEngine::InputInfo::Ptr& input = inputInfo.begin()->second;
@@ -50,7 +50,6 @@ int main() {
     auto outName = outputInfo.begin()->first;
     InferenceEngine::DataPtr& output = outputInfo.begin()->second;
     InferenceEngine::SizeVector size = output->getTensorDesc().getDims();
-    std::cout << size[2] << "==>" << size[3] << std::endl;
     int objectSize = size[3];
     output->setPrecision(InferenceEngine::Precision::FP32);
     output->setLayout(InferenceEngine::Layout::NCHW);
@@ -58,7 +57,7 @@ int main() {
     // load CNN net into the plugin
     InferenceEngine::ExecutableNetwork exeNet = plugin.LoadNetwork(cnnNet.getNetwork(), {});
     InferenceEngine::InferRequest::Ptr infRequest = exeNet.CreateInferRequestPtr();
-    cv::Mat frame = cv::imread("C:/Users/Alex/Pictures/Camera/IMG_20190104_211344.jpg");
+    cv::Mat frame = cv::imread("C:/Users/Alex/Pictures/people.png");
 
     //process the blob
     InferenceEngine::Blob::Ptr a = infRequest->GetBlob(inputName);

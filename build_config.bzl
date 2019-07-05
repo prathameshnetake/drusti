@@ -1,8 +1,10 @@
 def opencv_srcs(exclude = []):
   windows_srcs = ["lib/opencv_world410.lib", "lib/opencv_pvl410.lib"]
+  windows_srcs_dbg = ["lib/opencv_world410d.lib", "lib/opencv_pvl410d.lib"]
   linux_srcs = native.glob(["lib/*.so*"])
   return select({
     "@drusti//:windows" : windows_srcs,
+    "@drusti//:windows_dbg" : windows_srcs_dbg,
     "@drusti//:linux_x86_64" : linux_srcs,
   })
 
@@ -25,5 +27,6 @@ def opencv_linkopts(exclude = []):
 def ie_srcs():
   return select({
     "@drusti//:windows" : native.glob(["lib/*/Release/*.lib"]),
+    "@drusti//:windows_dbg" : native.glob(["lib/*/Debug/*.lib"]),
     "@drusti//:linux_x86_64" : native.glob(["lib/**/*.so"]),
   })

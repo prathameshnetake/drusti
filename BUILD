@@ -10,6 +10,12 @@ config_setting(
     visibility = ["//visibility:public"],
 )
 
+config_setting(
+    name = "windows_dbg",
+    values = {"cpu": "x64_windows", "compilation_mode": "dbg"},
+    visibility = ["//visibility:public"],
+)
+
 alias (
     name = "opencv",
     actual = select({
